@@ -1,0 +1,52 @@
+{% extends 'app/header.html' %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'vendor/css/shablon.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class = 'content'>
+      <div class = 'work'>
+        <p id="zadach">
+          {% for s in sohr %}{{s}}<br><br>{% endfor %}</p>
+      </div>
+      <div class = 'sending'>
+        <div class = 'div-button-back'>
+          <form action="{% url 'vibor' %}">
+          <button class = 'button-back'>назад к генерированию заданий</button>
+          </form>
+        </div>
+
+        <div class = 'container-sending'>
+          <div>
+            <button id="open-modal-btn" class = 'button-mail'><span class = 'send-mail'>отправить на почту</span><img src = "{% static 'vendor/img/pngwing 1.svg' %}"/></button>
+            </div>
+
+          <div class="modal" id="my-modal">
+            <div class="modal-box">
+              <button class="modal-close-btn" id="close-my-modal-btn"><img src="{% static 'vendor/img/крест.png' %}"></button>
+              <h2 id="mail-head">Отправить на почту</h2>
+              <p id="mail-vvod">Введите адрес электронной почты в поле ниже:</p>
+              <form method="post" action="{% url 'Shablon' %}">
+                {% csrf_token %}
+              <input type="email" name="email" id="form-email">
+              <button type="submit" id="send-email-btn">Отправить</button>
+              </form>
+            </div>
+          </div>
+
+
+          <div class = 'print-save'>
+             <a href="{% static 'vendor/files/hello.pdf' %}" id = 'print_text' class = 'link'>
+                <button class = 'button-print'><span class = 'print'>печать</span><img src = "{% static 'vendor/img/printer 1.svg' %}"/></button>
+             </a>
+            <a href="{% static 'vendor/files/Задачи.docx' %}" id = 'save_text' class = 'link' download>
+                <button class = 'button-save'><span class = 'save'>сохранить</span><img  src = "{% static 'vendor/img/save-file-icon-14 1.svg' %}"/></button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  <script defer src="{% static 'vendor/js/modal.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,119 @@
+{% extends 'app/header.html' %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'vendor/css/vibor.css' %}"/>
+{% endblock %}
+
+{% block content %}
+    <form action="{% url 'vibor' %}">
+    <div class="content">
+      <div class="setting">
+        <div class = 'qestion'>
+          <div class = 'container-label-qestion'>
+          <lable class="qestion-label">
+            <span class="qestion-text">ВОПРОС</span>
+            <select id="number-vopros" name="numbervop">
+              {% for number in numbers %}
+                    <option value="{{number}}" {% if numbervop == number %}selected{% endif %}>{{number}}</option>
+              {% endfor %}
+            </select>
+          </lable>
+        </div>
+        </div>
+        <div class = 'container'>
+
+          <div class = 'tema'>
+            <div class = 'tema-title'>Тема</div>
+            <div class = 'container-label-tema'>
+              <div class = 'div-input'>
+                <input type="radio" id="1" name="nametema" value="deistviya-nad-sob" {% if nametem == "deistviya-nad-sob" %}checked{% endif %} />
+                <label for="1">действия над событиями и соотношения между ними</label>
+              </div>
+              <div class = 'div-input'>
+                <input type="radio" id="2" name="nametema" value="klasopr" {% if nametem == "klasopr" %}checked{% endif %}/>
+                <label for="2">классическое определение вероятности</label>
+              </div>
+              <div class = 'div-input'>
+                <input type="radio" id="3" name="nametema" value="geom" {% if nametem == "geom" %}checked{% endif %}/>
+                <label for="3">геометрическая вероятность</label>
+              </div>
+              <div class = 'div-input'>
+                <input type="radio" id="4" name="nametema" value="slozh-umn-ver" {% if nametem == "slozh-umn-ver" %}checked{% endif %}/>
+                <label for="4">сложение и умножение вероятностей</label>
+              </div>
+              <div class = 'div-input'>
+                <input type="radio" id="5" name="nametema" value="fpv" {% if nametem == "fpv" %}checked{% endif %}/>
+                <label for="5">формула полной вероятности</label>
+              </div>
+              <div class = 'div-input'>
+                <input type="radio" id="6" name="nametema" value="bayes" {% if nametem == "bayes" %}checked{% endif %}/>
+                <label for="6">Формула Байеса</label>
+              </div>
+              <div class = 'div-input'>
+                <input type="radio" id="7" name="nametema" value="bern" {% if nametem == "bern" %}checked{% endif %}/>
+                <label for="7">формула Бернулли</label>
+              </div>
+              <div class = 'div-input'>
+                <input type="radio" id="8" name="nametema" value="naiv" {% if nametem == "naiv" %}checked{% endif %}/>
+                <label for="8">наивероятнейшее число событий</label>
+              </div>
+              <div class = 'div-input'>
+                <input type="radio" id="9" name="nametema" value="muavr-laplas" {% if nametem == "muavr-laplas" %}checked{% endif %}/>
+                <label for="9">формула Муавра - Лапласа</label>
+              </div>
+              <div class = 'div-input'>
+                <input type="radio" id="10" name="nametema" value="int-muavr-laplas" {% if nametem == "int-muavr-laplas" %}checked{% endif %}/>
+                <label for="10">интегральная формула Муавра - Лапласа</label>
+              </div>
+              <div class = 'div-input'>
+                <input type="radio" id="11" name="nametema" value="puass" {% if nametem == "puass" %}checked{% endif %}/>
+                <label for="11">формула Пуассона</label>
+              </div>
+              <div class = 'div-input'>
+                <input type="radio" id="12" name="nametema" value="diskr" {% if nametem == "diskr" %}checked{% endif %}/>
+                <label for="12">дискретные случайные величины и их числовые характеристики</label>
+              </div>
+              <div class = 'div-input'>
+                <input type="radio" id="13" name="nametema" value="nepr" {% if nametem == "nepr" %}checked{% endif %}/>
+                <label for="13">непрерывные случайные величины и их числовые характеристики</label>
+              </div>
+              <div class = 'div-input'>
+                <input type="radio" id="14" name="nametema" value="norm" {% if nametem == "norm" %}checked{% endif %}/>
+                <label for="14">нормальное распределение</label>
+              </div>
+            </div>
+          </div>
+          <div class = 'difficulty'>
+            <div class = 'difficulty-title'>Сложность</div>
+            <div class = 'container-label-difficulty'>
+              <div class = 'div-input'>
+                <input type="radio" id="difficulty1" name="slozhntema" value="ur1" {% if slozh == "ur1" %}checked{% endif %}/>
+                <label for="difficulty1">сложность 1</label>
+              </div>
+              <div class = 'div-input'>
+                <input type="radio" id="difficulty2" name="slozhntema" value="ur2" {% if slozh == "ur2" %}checked{% endif %}/>
+                <label for="difficulty2">сложность 2</label>
+              </div>
+              <div class = 'div-input'>
+                <input type="radio" id="difficulty3" name="slozhntema" value="ur3" {% if slozh == "ur3" %}checked{% endif %}/>
+                <label for="difficulty3">сложность 3</label>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+        <div class = 'div-button-generation'><button type="submit" class = 'button-generation'>сгенерировать</button></div>
+    </form>
+        <div class = 'pole'>
+             <p id="tasks">{{task}}</p>
+          <div class = 'div-button-finish'>
+            <form action="{% url 'Shablon' %}">
+            <button class = 'button-finish'>окончательный вид работы</button>
+            </form>
+          </div>
+        </div>
+      </div>
+{% endblock %}

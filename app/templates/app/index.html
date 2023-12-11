@@ -1,0 +1,64 @@
+{% extends 'app/header.html' %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'vendor/css/index.css' %}" />
+  <script src="{% static 'vendor/js/index.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+      <div class="tema">
+        <div class="tema-title">Доступные темы заданий</div>
+        <div class="tema-text">
+          <p class="tema-name">
+            действия над событиями и соотношения между ними
+          </p>
+          <p class="tema-name">классическое определение вероятности</p>
+          <p class="tema-name">геометрическая вероятность</p>
+          <p class="tema-name">сложение и умножение вероятностей</p>
+          <p class="tema-name">формула полной вероятности</p>
+          <p class="tema-name">формула Байеса</p>
+          <p class="tema-name">формула Бернулли</p>
+          <p class="tema-name">наивероятнейшее число событий</p>
+          <p class="tema-name">формула Муавра - Лапласа</p>
+          <p class="tema-name">интегральная формула Муавра - Лапласа</p>
+          <p class="tema-name">формула Пуассона</p>
+          <p class="tema-name">
+            дискретные случайные величины и их числовые характеристики
+          </p>
+          <p class="tema-name">
+            непрерывные случайные величины и их числовые характеристики
+          </p>
+          <p class="tema-name">нормальное распределение</p>
+        </div>
+      </div>
+      <div class="help">
+        <div class="div-help-title">
+          <div class="help-title">Помощь при работе с генератором</div>
+        </div>
+        <div class="help-a">
+          <p class="teory">инструкция к составлению заданий</p>
+          <img class="help-map" src="{% static 'vendor/img/help.jpeg' %}" />
+            <p class="teory"><a id="ssil-teor" href="{% url 'teor' %}">теоретический материал</a></p>
+        </div>
+
+
+
+        <form action="{% url 'vibor' %}">
+            <div class="div-firm">
+            <label
+              >выберите количество заданий:
+              <input type="number" name="kol" min="1"/>
+            </label>
+            </div>
+        <div class="div-gen">
+                <button class="generation" type="submit">составление заданий</button>
+        </div>
+          </form>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="contact">контактная информация</div>
+    </div>
+{% endblock %}
